@@ -138,7 +138,7 @@ async function deleteReport(report) {
   }
 
   try {
-    await fetch(`${apiBase}/${report.id}`, { method: "DELETE" });
+    await requestJson(`${apiBase}/${report.id}`, { method: "DELETE" });
     await loadReports(elements.authorFilter.value);
     setStatus("已删除");
   } catch (error) {
