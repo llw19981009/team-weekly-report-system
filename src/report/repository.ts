@@ -1,8 +1,8 @@
 import {
   createWeeklyReport,
+  updateWeeklyReport,
   type WeeklyReport,
   type WeeklyReportInput,
-  updateWeeklyReport,
 } from "./model.js";
 
 export class InMemoryWeeklyReportRepository {
