@@ -1,0 +1,23 @@
+{
+  "name": "team-weekly-report-system-v2",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/src/server/index.js",
+    "dev": "tsc -p tsconfig.json && node dist/src/server/index.js",
+    "test": "tsc -p tsconfig.json && node --test --test-isolation=none \"dist/tests/*.test.js\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "biome check ."
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.8",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3"
+  }
+}
