@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>团队周报工作台</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="workspace">
+      <section class="list-pane" aria-labelledby="page-title">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Weekly Reports</p>
+            <h1 id="page-title">团队周报工作台</h1>
+          </div>
+          <div class="counter" id="report-count">0</div>
+        </header>
+
+        <form class="filter-row" id="filter-form">
+          <label for="author-filter">提交人</label>
+          <input id="author-filter" name="author" type="search" placeholder="输入姓名筛选" />
+          <button type="submit">筛选</button>
+          <button type="button" class="ghost" id="clear-filter">清空</button>
+        </form>
+
+        <div class="status-line" id="status-line" role="status"></div>
+        <div class="report-list" id="report-list"></div>
+      </section>
+
+      <aside class="form-pane" aria-labelledby="form-title">
+        <div class="form-head">
+          <p class="eyebrow">Editor</p>
+          <h2 id="form-title">新建周报</h2>
+        </div>
+
+        <form id="report-form" class="report-form">
+          <input type="hidden" id="report-id" />
+
+          <label>
+            <span>提交人</span>
+            <input id="author" name="author" autocomplete="name" required />
+          </label>
+
+          <label>
+            <span>周次</span>
+            <input
+              id="week"
+              name="week"
+              placeholder="2026-W26"
+              pattern="\d{4}-W(0[1-9]|[1-4]\d|5[0-3])"
+              required
+            />
+          </label>
+
+          <label>
+            <span>本周完成</span>
+            <textarea id="completed" name="completed" rows="5" required></textarea>
+          </label>
+
+          <label>
+            <span>下周计划</span>
+            <textarea id="plan" name="plan" rows="5" required></textarea>
+          </label>
+
+          <label>
+            <span>风险阻塞</span>
+            <textarea id="blocker" name="blocker" rows="3"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" id="submit-button">保存</button>
+            <button type="button" class="ghost" id="reset-button">重置</button>
+          </div>
+        </form>
+      </aside>
+    </main>
+
+    <template id="report-card-template">
+      <article class="report-card">
+        <div class="card-main">
+          <div>
+            <h3 data-field="title"></h3>
+            <p data-field="summary"></p>
+          </div>
+          <span data-field="week" class="week-pill"></span>
+        </div>
+        <dl>
+          <div>
+            <dt>完成</dt>
+            <dd data-field="completed"></dd>
+          </div>
+          <div>
+            <dt>计划</dt>
+            <dd data-field="plan"></dd>
+          </div>
+          <div>
+            <dt>阻塞</dt>
+            <dd data-field="blocker"></dd>
+          </div>
+        </dl>
+        <footer>
+          <button type="button" data-action="edit">编辑</button>
+          <button type="button" class="danger" data-action="delete">删除</button>
+        </footer>
+      </article>
+    </template>
+
+    <script src="/main.js" type="module"></script>
+  </body>
+</html>
